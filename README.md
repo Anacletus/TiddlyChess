@@ -1,6 +1,6 @@
 # TiddlyChess
 
-A plugin for showing interactive chess boards from [PGN](https://en.wikipedia.org/wiki/Portable_Game_Notation) chess games in [Tiddkywiki](https://tiddlywiki.com/)
+A plugin for showing interactive chess boards from [PGN](https://en.wikipedia.org/wiki/Portable_Game_Notation) chess games in [Tiddlywiki](https://tiddlywiki.com/)
 ## Description
 
 
