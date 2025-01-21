@@ -1,0 +1,18 @@
+title: $:/plugins/anacletus/tiddlychess/readme
+
+!`TiddlyChess`
+
+Display graphical interactive chess boards from chess games in text format (PGN)
+
+* Provides a "pgn" widget `<$pgn pgn='1.e4'>` to display interactive chess boards with the pgn game passed as a parameter inside tiddlers. Variations, comments and colored lines and squares are supported.
+* Display tiddlers containing PGN text and defined with file type "PGN" as interactive chess boards using the widget. 
+
+
+This plugin is just a wrapper for Lichess PGN Viewer https://github.com/lichess-org/pgn-viewer .  Lichess (https://lichess.org/)  is probably the best chess server, and also free/libre, open-source and powered by volunteers and donations.
+
+Sourcecode: https://github.com/Anacletus/TiddlyChess
+
+Developed using typescript with `Modern.TiddlyDev`: https://github.com/tiddly-gittly/Modern.TiddlyDev 
+
+!Install 
+Installing the TW plugin: Drag the following link onto your tiddlywiki - $:/plugins/anacletus/tiddlychess - and click the import button, then reload your tiddlywiki.

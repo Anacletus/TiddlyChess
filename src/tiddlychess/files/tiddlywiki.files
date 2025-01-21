@@ -1,0 +1,11 @@
+{
+	"tiddlers": [
+		{
+			"file": "lichess-pgn-viewer.css",
+			"fields": {
+				"type": "text/plain",
+				"title": "$:/plugins/anacletus/tiddlychess/lichess-pgn-viewer.css"
+			}
+		}
+	]
+}

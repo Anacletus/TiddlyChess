@@ -1,0 +1,10 @@
+{
+  "title": "$:/plugins/anacletus/tiddlychess",
+  "author": "anacletus",
+  "description": "Display graphical interactive chess boards from chess games in text format (PGN).",
+  "core-version": ">=5.1.22",
+  "plugin-type": "plugin",
+  "version": "0.0.1",
+  "stability": "STABILITY_1_EXPERIMENTAL",
+  "list": "readme usage license tree"
+}

@@ -1,0 +1,20 @@
+title: $:/plugins/anacletus/tiddlychess/lichessgame
+type: application/x-chess-pgn
+
+[Event "Casual correspondence game"]
+[Site "https://lichess.org/6KIm7qcE"]
+[Date "2023.10.22"]
+[White "BobbyFischerFan12"]
+[Black "Priyam-Pal_2007"]
+[Result "1-0"]
+[UTCDate "2023.10.22"]
+[UTCTime "07:42:07"]
+[WhiteElo "1761"]
+[BlackElo "1382"]
+[Variant "Standard"]
+[TimeControl "-"]
+[ECO "A53"]
+[Termination "Normal"]
+[Annotator "lichess.org"]
+
+1. d4 { [%eval 0.0] } 1... Nf6 { [%eval 0.28] } 2. c4 { [%eval 0.16] } 2... d6 { [%eval 0.51] } { A53 Old Indian Defense } 3. Nf3 { [%eval 0.61] } 3... Nbd7 { [%eval 0.97] } 4. g3 { [%eval 0.55] } 4... c5 { [%eval 0.89] } 5. Bg2 { [%eval 0.88] } 5... g6 { [%eval 0.92] } 6. O-O { [%eval 0.93] } 6... Bg7 { [%eval 0.98] } 7. Nc3 { [%eval 0.93] } 7... O-O { [%eval 0.88] } 8. b3 { [%eval 0.75] } 8... cxd4 { [%eval 0.89] } 9. Nxd4 { [%eval 0.83] } 9... Qa5 { [%eval 0.85] } 10. Bd2 { [%eval 0.89] } 10... Rb8 { [%eval 0.92] } 11. e3 { [%eval 0.75] } 11... Ne5 { [%eval 1.22] } 12. Nd5 { [%eval 0.98] } 12... Qd8 { [%eval 0.89] } 13. Nxf6+ { [%eval 0.59] } 13... Bxf6 { [%eval 0.72] } 14. f4?! { (0.72 → 0.03) Inaccuracy. Bc3 was best. } { [%eval 0.03] } (14. Bc3 Bg4 15. Qd2 Qd7 16. e4 Bh3 17. Rad1 Bxg2 18. Kxg2 a6 19. f4 Nc6 20. Ne2 Bg7) 14... Bg4 { [%eval -0.02] } 15. Qc2 { [%eval -0.05] } 15... Nd7? { (-0.05 → 1.10) Mistake. Nc6 was best. } { [%eval 1.1] } (15... Nc6 16. Nxc6) 16. Bc3 { [%eval 1.14] } 16... Nc5 { [%eval 0.93] } 17. h3 { [%eval 0.47] } 17... Bd7 { [%eval 0.39] } 18. b4 { [%eval -0.09] } 18... Ne6 { [%eval 0.13] } 19. Nb3 { [%eval 0.03] } 19... Bc6 { [%eval 0.13] } 20. Bxf6 { [%eval 0.04] } 20... Bxg2 { [%eval 0.5] } 21. Bxe7 { [%eval 0.5] } 21... Qxe7 { [%eval 0.53] } 22. Qxg2 { [%eval 0.39] } 22... Rfc8 { [%eval 0.59] } 23. Rac1 { [%eval 0.62] } 23... Ng7 { [%eval 0.54] } 24. e4 { [%eval 0.41] } 24... f5? { (0.41 → 1.94) Mistake. Rc7 was best. } { [%eval 1.94] } (24... Rc7 25. Rc2 Rbc8 26. Rfc1 Nh5 27. Qf3 Nf6 28. Nd2 Re8 29. Re1 d5 30. e5 Qxb4 31. Rec1) 25. exf5 { [%eval 1.99] } 25... Nxf5 { [%eval 1.79] } 26. Rce1 { [%eval 1.91] } 26... Qc7?! { (1.91 → 2.65) Inaccuracy. Qf6 was best. } { [%eval 2.65] } (26... Qf6) 27. Qd5+?! { (2.65 → 1.87) Inaccuracy. g4 was best. } { [%eval 1.87] } (27. g4 Ng7 28. f5 gxf5 29. gxf5 Kh8 30. f6 Rg8 31. Qd5 Nh5+ 32. Kh2 Nxf6 33. Qd4 d5+) 27... Kh8 { [%eval 2.19] } 28. g4 { [%eval 2.32] } 28... Ng7 { [%eval 2.35] } 29. Re4 { [%eval 2.21] } 29... Qb6+ { [%eval 2.5] } 30. Kg2 { [%eval 2.53] } 30... Qxb4?! { (2.53 → 3.42) Inaccuracy. Re8 was best. } { [%eval 3.42] } (30... Re8 31. Rfe1 Qxb4 32. Rxe8+ Nxe8 33. Re7 Ng7 34. Nd2 Re8 35. Rxb7 Qa3 36. Nf3 Ne6 37. Kg3) 31. f5 { [%eval 3.49] } 31... gxf5 { [%eval 3.55] } 32. gxf5 { [%eval 3.47] } 32... Nh5? { (3.47 → 6.58) Mistake. Rg8 was best. } { [%eval 6.58] } (32... Rg8 33. Rg4 Rbf8 34. f6 Ne8 35. f7 Rxg4+ 36. hxg4 Ng7 37. Nd2 Qb6 38. Ne4 Qe3 39. Rf2) 33. Qd4+ { [%eval 7.54] } 33... Kg8? { (7.54 → Mate in 8) Checkmate is now unavoidable. Ng7 was best. } { [%eval #8] } (33... Ng7 34. f6) 34. Rg4+ { [%eval #20] } 34... Kf8 { [%eval #5] } 35. Qh8+ { [%eval #4] } 35... Kf7 { [%eval #4] } 36. Qxh7+ { [%eval #3] } 36... Kf6 { [%eval #2] } 37. Rg6+ { [%eval #1] } 37... Ke5 { [%eval #1] } 38. Re6# { White wins by checkmate. } 1-0

@@ -1,0 +1,4 @@
+title: $:/language/Docs/Types/application/x-chess-pgn
+description: PGN chess game
+group: Text
+name: application/x-chess-pgn
