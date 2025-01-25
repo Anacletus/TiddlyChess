@@ -4,7 +4,7 @@
   "description": "Display graphical interactive chess boards from chess games in text format (PGN).",
   "core-version": ">=5.1.22",
   "plugin-type": "plugin",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "stability": "STABILITY_1_EXPERIMENTAL",
   "list": "readme usage license tree"
 }

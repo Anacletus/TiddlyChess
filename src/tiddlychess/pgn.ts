@@ -4,23 +4,30 @@ import { widget as Widget } from '$:/core/modules/widgets/widget.js';
 import LichessPgnViewer from 'lichess-pgn-viewer';
 import './files/lichess-pgn-viewer.css';
 
+
 enum Modes {
 	Min = 'min',
 	Mincon = 'mincon'
 }
 class MyWidget extends Widget {
+	private readonly defaultWidthUnits = "em";
+	private readonly defaultWidth = "35";
+	private readonly defaultShowMoves = "right";
+
 
 	private pgn?: string;
+	private fen?: string;
 	private orientation?: 'white' | 'black' | undefined;
 	private orientationS?: string;
-	private showMoves?: false | "right" | "bottom" | "auto";
+	private showMoves: false | "right" | "bottom" | "auto" = this.defaultShowMoves;
 	private showMovesS?: string;
 	private initialPly?: number | 'last';
-	private width?: number;
+	private width: string = this.defaultWidth;
 	private showControlsS?: string;
 	private showControls?: boolean;
 	private modeS?: string;
 	private initialPlyS?: string;
+
 
 
 	// Do not define constructor
@@ -39,6 +46,7 @@ class MyWidget extends Widget {
 		this.makeChildWidgets();
 		// Do some other parsing work, here's an example
 		this.pgn = this.getAttribute("pgn", "");
+		this.fen = this.getAttribute("fen", "");
 
 		this.orientationS = this.getAttribute("orientation", "");
 		this.orientation = this.orientationS == "white" ? 'white' : this.orientationS == "black" ? 'black' : undefined
@@ -46,10 +54,10 @@ class MyWidget extends Widget {
 		this.initialPlyS = this.getAttribute("initialPly", "");
 		this.initialPly = this.initialPlyS == 'last' ? 'last' : parseInt(this.initialPlyS);
 
-		this.width = parseInt(this.getAttribute("width", "40"));
+		this.width = this.getAttribute("width", this.width);
 
-		this.showMovesS = this.getAttribute("showMoves", "");
-		this.showMoves = this.showMovesS == "false" ? false : this.showMovesS == "right" ? 'right' : this.showMovesS == "bottom" ? 'bottom' : this.showMovesS == "auto" ? 'auto' : undefined;
+		this.showMovesS = this.getAttribute("showMoves", this.defaultShowMoves);
+		this.showMoves = this.showMovesS == "false" ? false : this.showMovesS == "right" ? 'right' : this.showMovesS == "bottom" ? 'bottom' : this.showMovesS == "auto" ? 'auto' : this.defaultShowMoves;
 
 		this.showControlsS = this.getAttribute("showControls", "");
 		this.showControls = this.showControlsS == "true" ? true : this.showControlsS == "false" ? false : undefined;
@@ -58,12 +66,12 @@ class MyWidget extends Widget {
 		if (this.modeS == Modes.Min) {
 			this.showMoves = false;
 			this.showControls = false;
-			this.width = 15;
+			this.width = "15em";
 		}
 		else if (this.modeS == Modes.Mincon) {
 			this.showMoves = false;
 			this.showControls = true;
-			this.width = 15;
+			this.width = "15em";
 		}
 	}
 
@@ -72,11 +80,11 @@ class MyWidget extends Widget {
 		// Rendering pre-processing work
 		//this.parentDomNode = parent;
 		this.execute();
-		let div = this.document.createElement("div");
+		console.log('lafen' + this.fen);
 
 		let config = {
 			pgn: this.pgn, // the PGN to render
-			//fen: undefined, // initial FEN, will append [FEN "initial FEN"] to the PGN
+			fen: this.fen, // initial FEN, will append [FEN "initial FEN"] to the PGN
 			//showPlayers: undefined, // show the players above and under the board
 			//showClocks: true, // show the clocks alongside the players
 			showMoves: this.showMoves, // false | "right" | "bottom" | auto. "auto" uses media queries
@@ -103,20 +111,38 @@ class MyWidget extends Widget {
 			//classes: undefined, // CSS classes to set on the root element. Defaults to the element classes before being replaced by LPV.
 		};
 
-		const lpv = LichessPgnViewer(div as HTMLElement, config);
-		// lpv is an instance of PgnViewer , providing some utilities such as:
-		//lpv.goTo('first');
-		//lpv.goTo('next');
-		//lpv.flip();
+		let finalStyle = "--board-color:#F0D9B5;margin:1em auto;";
+		if (Number.isFinite(Number(this.width))) {
+			/*exists and it's a number, apply default em units */
+			finalStyle = finalStyle + `;max-width:${this.width}${this.defaultWidthUnits}`;
+		}
+		else {
+			/*not a number,  assume it's a max-width with units*/
+			finalStyle = finalStyle + `;max-width:${this.width}`;
+		}
 
-		if (lpv.div != undefined) {
-			lpv.div.setAttribute('style', `--board-color:#F0D9B5;width: ${this.width}em`);
+		try {
+			let div = this.document.createElement("div");
+			const lpv = LichessPgnViewer(div as HTMLElement, config);
+			// lpv is an instance of PgnViewer , providing some utilities such as:
+			//lpv.goTo('first');
+			//lpv.goTo('next');
+			//lpv.flip();
 
-			//workaround to display correctly arrows in the position. We do it before inserting in order to not take focus.
-			// Does not work with pgn with no moves...
+			if (lpv.div != undefined) {
+
+				lpv.div.setAttribute('style', finalStyle);
+
+			}
+			//workaround to display correctly arrows in the position. We do it before inserting in order to not take focus while editing with preview.
+			// Does not work with pgn with no moves nor with fen's...
+
+
+
 			if (lpv.canGoTo('prev')) {
 				lpv.goTo('prev');
 				lpv.goTo('next');
+
 			}
 			else if
 				(lpv.canGoTo('next')) {
@@ -129,10 +155,34 @@ class MyWidget extends Widget {
 			// Please put all created domNodes (root nodes are fine) into domNodes, so that tw can do automatic recycling.
 			this.domNodes.push(lpv.div as Element);
 
+
+			/* 
+			let node = this.document.createTextNode(`TiddlyChess path: ${lpv.curData().fen}`)
+			let domNode = this.document.createElement("button");
+			domNode.addEventListener("click", function (event) {
+				let handled = true;
+				node.nodeValue = lpv.curData().fen;
+				event.preventDefault();
+				event.stopPropagation();
+
+				return handled;
+			}, false);
+			parentNode.insertBefore(node, nextSibling);
+			parentNode.insertBefore(domNode, nextSibling);
+			*/
 			// The following content can be added when child widgets are supported. will update this.children
 			this.renderChildren(lpv.div as Element, nextSibling);
 		}
+		catch (err) {
+			let node = this.document.createTextNode(`TiddlyChess widget error: ${err}.${err.stack}`)
+			parentNode.insertBefore(node, nextSibling);
+			// Please put all created domNodes (root nodes are fine) into domNodes, so that tw can do automatic recycling.
+			this.domNodes.push(node as Element);
+
+		}
+
 	}
+
 
 	/**
 	 * Optional, refresh is performed, if not defined, no refresh is done, but an attempt is made to refresh the children widgets
@@ -143,12 +193,12 @@ class MyWidget extends Widget {
 		let name = this.getAttribute('tiddler', "");
 		const changedAttributes = this.computeAttributes();
 		// Determine whether to perform a refresh or not, the determination here is just an example
-		if (changedAttributes.pgn || changedAttributes.orientation ||
+		if (changedAttributes.pgn || changedAttributes.fen || changedAttributes.orientation ||
 			changedAttributes.width || changedAttributes.mode ||
 			changedAttributes.showControls || changedAttributes.showMoves ||
-			changedAttributes.initialPly ||
+			changedAttributes.initialPly
 			//this redraws all boards in a tiddler when editing it with preview.. ¿Is it needed?
-			changedTiddlers[name]
+			//|| changedTiddlers[name]
 			//changedTiddlers.includes(changedAttributes.title)
 
 		) {

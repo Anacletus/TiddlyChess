@@ -1,0 +1,11 @@
+title: $:/plugins/anacletus/tiddlychess/config/ViewTemplateBodyFilters/x-chess-fen
+tags: [[$:/tags/ViewTemplateBodyFilter]]
+list-before:
+
+
+
+[type[application/x-chess-fen]then[$:/plugins/anacletus/tiddlychess/ViewTemplate/fen]]
+[tag[FEN]then[$:/plugins/anacletus/tiddlychess/ViewTemplate/fen]]
+
+
+

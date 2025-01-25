@@ -1,7 +1,0 @@
-title: $:/templates/ViewTemplate/pgn
-
-<$pgn pgn={{!!text}}>
-
-
-
-

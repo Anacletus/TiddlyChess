@@ -1,0 +1,7 @@
+title: $:/plugins/anacletus/tiddlychess/ViewTemplate/fen
+
+<$pgn  pgn={{!!text}} fen={{!!title}}}/>
+
+
+
+

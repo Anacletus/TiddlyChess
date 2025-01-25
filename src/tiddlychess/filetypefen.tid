@@ -1,0 +1,4 @@
+title: $:/language/Docs/Types/application/x-chess-fen
+description: FEN chess position
+group: Text
+name: application/x-chess-fen

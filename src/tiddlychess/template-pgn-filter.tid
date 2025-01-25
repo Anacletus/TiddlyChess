@@ -1,0 +1,12 @@
+title: $:/plugins/anacletus/tiddlychess/config/ViewTemplateBodyFilters/x-chess-pgn
+tags: [[$:/tags/ViewTemplateBodyFilter]]
+list-before:
+
+
+
+[type[application/x-chess-pgn]then[$:/plugins/anacletus/tiddlychess/ViewTemplate/pgn]]
+[tag[PGN]then[$:/plugins/anacletus/tiddlychess/ViewTemplate/pgn]]
+
+
+
+

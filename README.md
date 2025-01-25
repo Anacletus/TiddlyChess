@@ -1,11 +1,12 @@
 # TiddlyChess
 
-A plugin for showing interactive chess boards from [PGN](https://en.wikipedia.org/wiki/Portable_Game_Notation) chess games in [Tiddlywiki](https://tiddlywiki.com/)
+A plugin for showing interactive chess boards from [PGN](https://en.wikipedia.org/wiki/Portable_Game_Notation) chess games and [FEN](https://en.wikipedia.org/wiki/Forsyth%E2%80%93Edwards_Notation) chess positions in [Tiddlywiki](https://tiddlywiki.com/)
 ## Description
 
 
-* Provides a "pgn" widget to display an interactive chess board with the pgn game passed as a parameter.  Variations, comments and colored lines and squares are supported.
-* Display tiddlers defined with file type "PGN" as interactive chess boards using the widget. 
+* Provides a "pgn" widget to display an interactive chess board with the pgn game or fen position passed as parameters.  Variations, comments and colored lines and squares are supported.
+* Display PGN tiddlers as interactive chess boards using the widget. 
+* Display FEN tiddlers as chess boards using the widget. 
 
 This plugin is just a wrapper for [Lichess PGN Viewer](https://github.com/lichess-org/pgn-viewer)  
 ![image](https://raw.githubusercontent.com/lichess-org/pgn-viewer/master/screenshot/tree-comment.png)
@@ -20,11 +21,8 @@ This plugin is just a wrapper for [Lichess PGN Viewer](https://github.com/liches
 
 See how to use it in the "Usage" tab of the plugin inside Tiddlywiki.
 
+Plugin forum thread:  https://talk.tiddlywiki.org/t/announcing-tiddlychess/
 
-## Version History
-
-* 0.1
-    * Initial Release using lichess-pgn-viewer 2.3.0.
 
 ## License
 
