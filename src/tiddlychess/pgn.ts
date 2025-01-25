@@ -77,10 +77,11 @@ class MyWidget extends Widget {
 
 	/** It will only be called automatically when rendering for the first time, when re-rendering after destruction, or actively through methods such as this.refreshSelf */
 	render(parentNode: Element, nextSibling: Element) {
+
 		// Rendering pre-processing work
 		//this.parentDomNode = parent;
 		this.execute();
-		console.log('lafen' + this.fen);
+
 
 		let config = {
 			pgn: this.pgn, // the PGN to render
@@ -151,10 +152,15 @@ class MyWidget extends Widget {
 			}
 
 			//original div seems unchanged, so we insert the node contained in lpv
-			parentNode.insertBefore(lpv.div as Node, nextSibling);
-			// Please put all created domNodes (root nodes are fine) into domNodes, so that tw can do automatic recycling.
-			this.domNodes.push(lpv.div as Element);
 
+			if (parentNode != undefined) {
+				//parentNode is undefined in PGN tiddler edited in preview mode
+				parentNode.insertBefore(lpv.div as Node, nextSibling);
+				// Please put all created domNodes (root nodes are fine) into domNodes, so that tw can do automatic recycling.
+				this.domNodes.push(lpv.div as Element);
+				// The following content can be added when child widgets are supported. will update this.children
+				this.renderChildren(lpv.div as Element, nextSibling);
+			}
 
 			/* 
 			let node = this.document.createTextNode(`TiddlyChess path: ${lpv.curData().fen}`)
@@ -170,14 +176,16 @@ class MyWidget extends Widget {
 			parentNode.insertBefore(node, nextSibling);
 			parentNode.insertBefore(domNode, nextSibling);
 			*/
-			// The following content can be added when child widgets are supported. will update this.children
-			this.renderChildren(lpv.div as Element, nextSibling);
+
 		}
 		catch (err) {
+			console.log(`TiddlyChess widget error: ${err}.${err.stack}`);
 			let node = this.document.createTextNode(`TiddlyChess widget error: ${err}.${err.stack}`)
-			parentNode.insertBefore(node, nextSibling);
-			// Please put all created domNodes (root nodes are fine) into domNodes, so that tw can do automatic recycling.
-			this.domNodes.push(node as Element);
+			if (parentNode != undefined) {
+				parentNode.insertBefore(node, nextSibling);
+				// Please put all created domNodes (root nodes are fine) into domNodes, so that tw can do automatic recycling.
+				this.domNodes.push(node as Element);
+			}
 
 		}
 
