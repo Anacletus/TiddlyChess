@@ -12,7 +12,7 @@ enum Modes {
 class MyWidget extends Widget {
 	private readonly defaultWidthUnits = "em";
 	private readonly defaultWidth = "35";
-	private readonly defaultShowMoves = "right";
+	private readonly defaultShowMoves = "auto";
 
 
 	private pgn?: string;
@@ -160,7 +160,7 @@ class MyWidget extends Widget {
 				this.domNodes.push(lpv.div as Element);
 				// The following content can be added when child widgets are supported. will update this.children
 				this.renderChildren(lpv.div as Element, nextSibling);
-			}else{
+			} else {
 				console.log(`TiddlyChess widget unexpected undefined parentNode`);
 			}
 

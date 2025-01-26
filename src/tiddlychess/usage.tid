@@ -6,7 +6,7 @@ title: $:/plugins/anacletus/tiddlychess/usage
 !! Parameters
 * `pgn`: the PGN text to render.  Standard english notation is supported, no language move variations are allowed.
 * `fen`: FEN string defining the position to show.  Use it to show fixed board positions instead of full games. Note that the pgn parameter can still be used to show comments in the move section (enclosed by curly brackets as usual).  
-* `showMoves`: Specifies how to show the move list. Values: `false` (do not show)  , `right` (default), `bottom` or `auto` (uses media queries).
+* `showMoves`: Specifies how to show the move list. Values: `false` (do not show)  , `right`, `bottom` or `auto` (default, uses media queries).
 * `showControls`: Specifies how to show the [prev, menu, next] buttons.  Values: `false` (do not show)  , `true` (default, show them at the bottom).  Note that cursor keys and mouse wheel can also be used to move thought the game.
 * `orientation`: Orientation of the board. Values: `white` , `black`. Do not define this to use the Orientation PGN tag. Note that you can change orientation interactively from the board menu.
 * `initialPly`: Defines the starting position to display. Can be a `number`, or `last`
