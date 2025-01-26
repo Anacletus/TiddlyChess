@@ -160,6 +160,8 @@ class MyWidget extends Widget {
 				this.domNodes.push(lpv.div as Element);
 				// The following content can be added when child widgets are supported. will update this.children
 				this.renderChildren(lpv.div as Element, nextSibling);
+			}else{
+				console.log(`TiddlyChess widget unexpected undefined parentNode`);
 			}
 
 			/* 
