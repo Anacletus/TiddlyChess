@@ -35,11 +35,52 @@ title: $:/plugins/anacletus/tiddlychess/usage
 * You can show a fixed position using the fen parameter. This will append a `[FEN]` line.  The rest of the pgn (comments for example, enclosed by curly brackets as usual) can still be included in the pgn parameter: `<$pgn  pgn='{No comments}'  fen="rnbqkbnr/pp1ppppp/8/2p5/4P3/5N2/PPPP1PPP/RNBQKB1R b KQkq - 1 2" />` <$pgn  pgn='{No comments}'  fen="rnbqkbnr/pp1ppppp/8/2p5/4P3/5N2/PPPP1PPP/RNBQKB1R b KQkq - 1 2" />
 
 !! PGN tiddler
-* You can store a pgn game in a dedicated tiddler.  Set it's "Content type" field to `PGN-Chess-Game ( application/x-chess-pgn)`, or tag it with "PGN",  if you want to visualize it with the widget. 
+* You can store a pgn game in a dedicated tiddler.  Set its "Content type" field to `PGN-Chess-Game ( application/x-chess-pgn)`, or tag it with "PGN",  if you want to visualize it with the widget. 
 * You can use the contents of another tiddler as the pgn source, by transcluding it in the widget call using curly brackets, as in: `<$pgn pgn={{game1}}/>` <$pgn pgn={{$:/plugins/anacletus/tiddlychess/immortal}}/>
 
 !! FEN tiddler
-* You can store a fen position in a dedicated tiddler.  Set it's title to the FEN string position (like `rnbqkbnr/pp1ppppp/8/2p5/4P3/5N2/PPPP1PPP/RNBQKB1R b KQkq - 1 2`), and optionally annotate it with comments in the tiddler text (enclosed by curly brackets as usual).  Set it's "Content type" field to `FEN-Chess-Position ( application/x-chess-fen)` or tag it as "FEN" if you want to visualize it with the widget. 
+* You can store a fen position in a dedicated tiddler.  Set its title to the FEN string position (like `rnbqkbnr/pp1ppppp/8/2p5/4P3/5N2/PPPP1PPP/RNBQKB1R b KQkq - 1 2`), and optionally annotate it with comments in the tiddler text (enclosed by curly brackets as usual).  Set its "Content type" field to `FEN-Chess-Position ( application/x-chess-fen)` or tag it as "FEN" if you want to visualize it with the widget. 
+
+!! Multiline annotations
+* To have multiline annotations, use multiple consecutive curly braces. For example, for the `FEN` tiddler from the previous example, setting the text field to
+
+```
+{foo}{bar}
+```
+
+or
+
+```
+{foo} {bar}
+```
+
+or
+
+```
+{foo}
+{bar}
+```
+
+will work, but
+
+```
+{foo}
+
+{bar}
+```
+
+will only show the first annotation.
+
+!! Annotations outside the board widget
+* To have annotations outside the board widget, use the `<$pgn>` widget in a regular tiddler and put annotations after it. This allows having multiline annotations. This also allows using wikitext markup in annotations, for example having valid clickable links to other `PGN`, `FEN` and just regular container tiddlers (like the one in the example below):
+
+```
+<$pgn fen="rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" initialPly=last mode=min orientation =“black”/>
+
+[[Annotation]]
+
+Annotation 1
+```
 
 !! Lichess interaction
 Using the menu, you can go to [[Lichess|https://lichess.org]] to analyze a position or play against the computer from it.  Also, if the pgn game comes from Lichess (it has a Lichess tag identifying the game), there is an option to open the whole game in Lichess analyze board. 
